@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  /* Keyframe for Spaceship Animation */
+  .spaceship {
+    animation: spaceshipMove 6s ease-in-out infinite;
+  }
+
+  /* Keyframe for Star Animation */
+  .bg-stars {
+    background: url('/stars-background.png') repeat;
+    animation: twinkleStars 1.5s infinite ease-in-out;
+  }
+
+  /* Pulse animation for spaceship exhaust */
+  .spaceship-fire {
+    animation: pulse 1s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(0.9); opacity: 1; }
+    50% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(0.9); opacity: 1; }
+  }
+}
