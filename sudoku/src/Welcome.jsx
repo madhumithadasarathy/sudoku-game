@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom'; // Ensure this is imported
 
-const Welcome = ({ onStartJourney }) => {
+const Welcome = () => {
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate(); // Initialize navigate hook
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false); // Simulate loading process
-    }, 5000); // Adjust this value as per your loading time
-  }, []);
+      navigate('/level-map'); // Redirect to the LevelMap page after loading
+    }, 5000); // Adjust this time for the loading screen (in ms)
+  }, [navigate]); // Re-run effect if navigate changes
 
   return (
     <div className="relative w-full h-screen bg-cover bg-center" style={{ backgroundImage: "url('/space-background.jpg')" }}>
@@ -46,12 +49,6 @@ const Welcome = ({ onStartJourney }) => {
             transition={{ delay: 1, duration: 2 }}
           >
             <p>Ready for Takeoff!</p>
-            <button
-              onClick={onStartJourney}
-              className="mt-6 px-8 py-4 bg-blue-600 text-white text-2xl rounded-lg hover:bg-blue-700 transition-all transform duration-200"
-            >
-              Start Journey
-            </button>
           </motion.div>
         )}
       </div>

@@ -1,18 +1,20 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Welcome from './Welcome';
 import LevelMap from './LevelMap';
-import SudokuGame from './SudokuGame';
+
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
+        {/* Route for the Welcome page (Loading Screen) */}
         <Route path="/" element={<Welcome />} />
-        <Route path="/levels" element={<LevelMap />} />
-        <Route path="/game/:level" element={<SudokuGame />} />
+        
+        {/* Route for the LevelMap page */}
+        <Route path="/level-map" element={<LevelMap />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 };
 
